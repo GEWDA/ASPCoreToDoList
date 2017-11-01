@@ -2,8 +2,13 @@
 $(document).ready(function () {
     // Wire up the Add button to send the new item to the server
     $('#add-item-button').on('click', addItem);
+
     $('.done-checkbox').on('click', function (e) { markCompleted(e.target); });
 });
+
+$('#add-item-title').submit(function (event) {
+    addItem();
+});//trigger button click on enter press in input
 
 function addItem() {
     $('#add-item-error').hide();

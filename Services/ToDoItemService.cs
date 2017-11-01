@@ -21,7 +21,8 @@ namespace ASPCoreToDoList.Services
             return await _context.Items
             .Where(x => x.IsDone == false)
             .ToArrayAsync();
-        }        public async Task<bool> AddItemAsync(NewToDoItem newItem)
+        }
+        public async Task<bool> AddItemAsync(NewToDoItem newItem)
         {
             var entity = new ToDoItem
             {
@@ -33,7 +34,8 @@ namespace ASPCoreToDoList.Services
             _context.Items.Add(entity);
             var saveResult = await _context.SaveChangesAsync();
             return saveResult == 1;
-        }        public async Task<bool> MarkDoneAsync(Guid id)
+        }
+        public async Task<bool> MarkDoneAsync(Guid id)
         {
             var item = await _context.Items.Where(x => x.Id == id).SingleOrDefaultAsync();
             if (item == null) {return false;}
